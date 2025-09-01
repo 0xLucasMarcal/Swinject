@@ -3,6 +3,7 @@
 //
 
 import XCTest
+
 @testable import Swinject
 
 // MARK: Option

@@ -201,10 +201,12 @@ public final class Container {
     ///
     /// - Returns: A synchronized container as ``Resolver``.
     public func synchronize() -> Resolver {
-        return Container(parent: self,
-                         debugHelper: debugHelper,
-                         defaultObjectScope: defaultObjectScope,
-                         synchronized: true)
+        return Container(
+            parent: self,
+            debugHelper: debugHelper,
+            defaultObjectScope: defaultObjectScope,
+            synchronized: true
+        )
     }
 
     /// Adds behavior to the container. `Behavior.container(_:didRegisterService:withName:)` will be invoked for
@@ -236,7 +238,7 @@ public final class Container {
             } || parent?.hasAnyRegistration(of: serviceType, name: name) == true
         }
     }
-    
+
     /// Applies a given GraphIdentifier across resolves in the provided closure.
     /// - Parameters:
     ///   - identifier: Graph scope to use
@@ -245,7 +247,7 @@ public final class Container {
     public func withObjectGraph<T>(_ identifier: GraphIdentifier, closure: (Container) throws -> T) rethrows -> T {
         try syncIfEnabled {
             let graphIdentifier = currentObjectGraph
-            defer { 
+            defer {
                 self.currentObjectGraph = graphIdentifier
                 decrementResolutionDepth()
             }
@@ -309,7 +311,10 @@ extension Container: _Resolver {
         guard let wrapper = Wrapper.self as? InstanceWrapper.Type else { return nil }
 
         let key = ServiceKey(
-            serviceType: wrapper.wrappedType, argumentsType: Arguments.self, name: name, option: option
+            serviceType: wrapper.wrappedType,
+            argumentsType: Arguments.self,
+            name: name,
+            option: option
         )
 
         if let entry = getEntry(for: key) {
@@ -344,8 +349,10 @@ extension Container: _Resolver {
             currentObjectGraph = GraphIdentifier()
         }
         guard resolutionDepth < maxResolutionDepth else {
-            fatalError("Infinite recursive call for circular dependency has been detected. " +
-                "To avoid the infinite call, 'initCompleted' handler should be used to inject circular dependency.")
+            fatalError(
+                "Infinite recursive call for circular dependency has been detected. "
+                    + "To avoid the infinite call, 'initCompleted' handler should be used to inject circular dependency."
+            )
         }
         resolutionDepth += 1
     }
@@ -422,7 +429,8 @@ extension Container: Resolver {
         graphInstancesInFlight.append(entry)
 
         if let completed = entry.initCompleted as? (Resolver, Any) -> Void,
-           let resolvedInstance = resolvedInstance as? Service {
+            let resolvedInstance = resolvedInstance as? Service
+        {
             completed(self, resolvedInstance)
         }
 
@@ -430,7 +438,9 @@ extension Container: Resolver {
     }
 
     private func persistedInstance<Service>(
-        _: Service.Type, from entry: ServiceEntryProtocol, in graph: GraphIdentifier
+        _: Service.Type,
+        from entry: ServiceEntryProtocol,
+        in graph: GraphIdentifier
     ) -> Service? {
         if let instance = entry.storage.instance(inGraph: graph), let service = instance as? Service {
             return service

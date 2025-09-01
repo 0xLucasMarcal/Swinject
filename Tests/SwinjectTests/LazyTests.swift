@@ -2,8 +2,8 @@
 //  Copyright © 2021 Swinject Contributors. All rights reserved.
 //
 
-import XCTest
 import Swinject
+import XCTest
 
 class LazyTests: XCTestCase {
     var container: Container!
@@ -22,7 +22,9 @@ class LazyTests: XCTestCase {
 
     func testContainerDoesNotCreateInstanceUntilRequested() {
         var created = false
-        container.register(Animal.self) { _ in created = true; return Dog() }
+        container.register(Animal.self) { _ in
+            created = true; return Dog()
+        }
 
         _ = container.resolve(Lazy<Animal>.self)
 
@@ -31,7 +33,9 @@ class LazyTests: XCTestCase {
 
     func testContainerResolveInstanceFromContainerOnlyOnce() {
         var created = 0
-        container.register(Animal.self) { _ in created += 1; return Dog() }
+        container.register(Animal.self) { _ in
+            created += 1; return Dog()
+        }
 
         let lazy = container.resolve(Lazy<Animal>.self)
         _ = lazy?.instance

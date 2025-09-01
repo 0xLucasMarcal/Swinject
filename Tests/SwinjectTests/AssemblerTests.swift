@@ -3,6 +3,7 @@
 //
 
 import XCTest
+
 @testable import Swinject
 
 class AssemblerTests: XCTestCase {
@@ -10,7 +11,7 @@ class AssemblerTests: XCTestCase {
 
     func testAssemblerCanAssembleSingleContainer() {
         let assembler = Assembler([
-            AnimalAssembly(),
+            AnimalAssembly()
         ])
         let cat = assembler.resolver.resolve(Animal.self)
         XCTAssertNotNil(cat)
@@ -28,9 +29,12 @@ class AssemblerTests: XCTestCase {
     }
 
     func testAssemblerCanAssembleContainerWithNilParentAndAssemblies() {
-        let assembler = Assembler([
-            AnimalAssembly(),
-        ], parent: nil)
+        let assembler = Assembler(
+            [
+                AnimalAssembly()
+            ],
+            parent: nil
+        )
         let cat = assembler.resolver.resolve(Animal.self)
         XCTAssertNotNil(cat)
         XCTAssertEqual(cat!.name, "Whiskers")
@@ -198,7 +202,7 @@ class AssemblerTests: XCTestCase {
 
         XCTAssertFalse(loadAwareAssembly.loaded)
         let assembler = Assembler([
-            loadAwareAssembly,
+            loadAwareAssembly
         ])
         XCTAssert(loadAwareAssembly.loaded)
 
@@ -251,7 +255,7 @@ class AssemblerTests: XCTestCase {
 
     func testChildAssemblerCanBeEmpty() {
         let assembler = Assembler([
-            AnimalAssembly(),
+            AnimalAssembly()
         ])
 
         let childAssembler = Assembler(parentAssembler: assembler)
@@ -271,9 +275,12 @@ class AssemblerTests: XCTestCase {
 
     func testChildAssemblerCannotGiveEntitiesToParent() {
         let assembler = Assembler()
-        let childAssembler = Assembler([
-            AnimalAssembly(),
-        ], parent: assembler)
+        let childAssembler = Assembler(
+            [
+                AnimalAssembly()
+            ],
+            parent: assembler
+        )
 
         let cat = assembler.resolver.resolve(Animal.self)
         XCTAssertNil(cat)
@@ -285,8 +292,10 @@ class AssemblerTests: XCTestCase {
     func testChildAssemblerUsesInjectedDefaultObjectScope() {
         let parentContainer = Container()
         let parentAssembler = Assembler(container: parentContainer)
-        let childAssembler = Assembler(parentAssembler: parentAssembler,
-                                       defaultObjectScope: ObjectScope.container)
+        let childAssembler = Assembler(
+            parentAssembler: parentAssembler,
+            defaultObjectScope: ObjectScope.container
+        )
 
         childAssembler.apply(assembly: ContainerSpyAssembly())
         let container = childAssembler.resolver.resolve(Container.self)

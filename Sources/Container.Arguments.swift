@@ -251,7 +251,8 @@ extension Container {
     ///            and list of 2 arguments is found in the ``Container``.
     public func resolve<Service, Arg1, Arg2>(
         _ serviceType: Service.Type,
-        arguments arg1: Arg1, _ arg2: Arg2
+        arguments arg1: Arg1,
+        _ arg2: Arg2
     ) -> Service? {
         return resolve(serviceType, name: nil, arguments: arg1, arg2)
     }
@@ -268,7 +269,8 @@ extension Container {
     public func resolve<Service, Arg1, Arg2>(
         _: Service.Type,
         name: String?,
-        arguments arg1: Arg1, _ arg2: Arg2
+        arguments arg1: Arg1,
+        _ arg2: Arg2
     ) -> Service? {
         typealias FactoryType = ((Resolver, Arg1, Arg2)) -> Any
         return _resolve(name: name) { (factory: FactoryType) in factory((self, arg1, arg2)) }
@@ -284,7 +286,9 @@ extension Container {
     ///            and list of 3 arguments is found in the ``Container``.
     public func resolve<Service, Arg1, Arg2, Arg3>(
         _ serviceType: Service.Type,
-        arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3
+        arguments arg1: Arg1,
+        _ arg2: Arg2,
+        _ arg3: Arg3
     ) -> Service? {
         return resolve(serviceType, name: nil, arguments: arg1, arg2, arg3)
     }
@@ -301,7 +305,9 @@ extension Container {
     public func resolve<Service, Arg1, Arg2, Arg3>(
         _: Service.Type,
         name: String?,
-        arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3
+        arguments arg1: Arg1,
+        _ arg2: Arg2,
+        _ arg3: Arg3
     ) -> Service? {
         typealias FactoryType = ((Resolver, Arg1, Arg2, Arg3)) -> Any
         return _resolve(name: name) { (factory: FactoryType) in factory((self, arg1, arg2, arg3)) }
@@ -317,7 +323,10 @@ extension Container {
     ///            and list of 4 arguments is found in the ``Container``.
     public func resolve<Service, Arg1, Arg2, Arg3, Arg4>(
         _ serviceType: Service.Type,
-        arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4
+        arguments arg1: Arg1,
+        _ arg2: Arg2,
+        _ arg3: Arg3,
+        _ arg4: Arg4
     ) -> Service? {
         return resolve(serviceType, name: nil, arguments: arg1, arg2, arg3, arg4)
     }
@@ -334,7 +343,10 @@ extension Container {
     public func resolve<Service, Arg1, Arg2, Arg3, Arg4>(
         _: Service.Type,
         name: String?,
-        arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4
+        arguments arg1: Arg1,
+        _ arg2: Arg2,
+        _ arg3: Arg3,
+        _ arg4: Arg4
     ) -> Service? {
         typealias FactoryType = ((Resolver, Arg1, Arg2, Arg3, Arg4)) -> Any
         return _resolve(name: name) { (factory: FactoryType) in factory((self, arg1, arg2, arg3, arg4)) }
@@ -350,7 +362,11 @@ extension Container {
     ///            and list of 5 arguments is found in the ``Container``.
     public func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5>(
         _ serviceType: Service.Type,
-        arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5
+        arguments arg1: Arg1,
+        _ arg2: Arg2,
+        _ arg3: Arg3,
+        _ arg4: Arg4,
+        _ arg5: Arg5
     ) -> Service? {
         return resolve(serviceType, name: nil, arguments: arg1, arg2, arg3, arg4, arg5)
     }
@@ -367,7 +383,11 @@ extension Container {
     public func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5>(
         _: Service.Type,
         name: String?,
-        arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5
+        arguments arg1: Arg1,
+        _ arg2: Arg2,
+        _ arg3: Arg3,
+        _ arg4: Arg4,
+        _ arg5: Arg5
     ) -> Service? {
         typealias FactoryType = ((Resolver, Arg1, Arg2, Arg3, Arg4, Arg5)) -> Any
         return _resolve(name: name) { (factory: FactoryType) in factory((self, arg1, arg2, arg3, arg4, arg5)) }
@@ -383,7 +403,12 @@ extension Container {
     ///            and list of 6 arguments is found in the ``Container``.
     public func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6>(
         _ serviceType: Service.Type,
-        arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6
+        arguments arg1: Arg1,
+        _ arg2: Arg2,
+        _ arg3: Arg3,
+        _ arg4: Arg4,
+        _ arg5: Arg5,
+        _ arg6: Arg6
     ) -> Service? {
         return resolve(serviceType, name: nil, arguments: arg1, arg2, arg3, arg4, arg5, arg6)
     }
@@ -400,7 +425,12 @@ extension Container {
     public func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6>(
         _: Service.Type,
         name: String?,
-        arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6
+        arguments arg1: Arg1,
+        _ arg2: Arg2,
+        _ arg3: Arg3,
+        _ arg4: Arg4,
+        _ arg5: Arg5,
+        _ arg6: Arg6
     ) -> Service? {
         typealias FactoryType = ((Resolver, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6)) -> Any
         return _resolve(name: name) { (factory: FactoryType) in factory((self, arg1, arg2, arg3, arg4, arg5, arg6)) }
@@ -416,7 +446,13 @@ extension Container {
     ///            and list of 7 arguments is found in the ``Container``.
     public func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7>(
         _ serviceType: Service.Type,
-        arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6, _ arg7: Arg7
+        arguments arg1: Arg1,
+        _ arg2: Arg2,
+        _ arg3: Arg3,
+        _ arg4: Arg4,
+        _ arg5: Arg5,
+        _ arg6: Arg6,
+        _ arg7: Arg7
     ) -> Service? {
         return resolve(serviceType, name: nil, arguments: arg1, arg2, arg3, arg4, arg5, arg6, arg7)
     }
@@ -433,10 +469,18 @@ extension Container {
     public func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7>(
         _: Service.Type,
         name: String?,
-        arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6, _ arg7: Arg7
+        arguments arg1: Arg1,
+        _ arg2: Arg2,
+        _ arg3: Arg3,
+        _ arg4: Arg4,
+        _ arg5: Arg5,
+        _ arg6: Arg6,
+        _ arg7: Arg7
     ) -> Service? {
         typealias FactoryType = ((Resolver, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7)) -> Any
-        return _resolve(name: name) { (factory: FactoryType) in factory((self, arg1, arg2, arg3, arg4, arg5, arg6, arg7)) }
+        return _resolve(name: name) { (factory: FactoryType) in
+            factory((self, arg1, arg2, arg3, arg4, arg5, arg6, arg7))
+        }
     }
 
     /// Retrieves the instance with the specified service type and list of 8 arguments to the factory closure.
@@ -449,7 +493,14 @@ extension Container {
     ///            and list of 8 arguments is found in the ``Container``.
     public func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8>(
         _ serviceType: Service.Type,
-        arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6, _ arg7: Arg7, _ arg8: Arg8
+        arguments arg1: Arg1,
+        _ arg2: Arg2,
+        _ arg3: Arg3,
+        _ arg4: Arg4,
+        _ arg5: Arg5,
+        _ arg6: Arg6,
+        _ arg7: Arg7,
+        _ arg8: Arg8
     ) -> Service? {
         return resolve(serviceType, name: nil, arguments: arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
     }
@@ -466,10 +517,19 @@ extension Container {
     public func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8>(
         _: Service.Type,
         name: String?,
-        arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6, _ arg7: Arg7, _ arg8: Arg8
+        arguments arg1: Arg1,
+        _ arg2: Arg2,
+        _ arg3: Arg3,
+        _ arg4: Arg4,
+        _ arg5: Arg5,
+        _ arg6: Arg6,
+        _ arg7: Arg7,
+        _ arg8: Arg8
     ) -> Service? {
         typealias FactoryType = ((Resolver, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8)) -> Any
-        return _resolve(name: name) { (factory: FactoryType) in factory((self, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)) }
+        return _resolve(name: name) { (factory: FactoryType) in
+            factory((self, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8))
+        }
     }
 
     /// Retrieves the instance with the specified service type and list of 9 arguments to the factory closure.
@@ -482,7 +542,15 @@ extension Container {
     ///            and list of 9 arguments is found in the ``Container``.
     public func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9>(
         _ serviceType: Service.Type,
-        arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6, _ arg7: Arg7, _ arg8: Arg8, _ arg9: Arg9
+        arguments arg1: Arg1,
+        _ arg2: Arg2,
+        _ arg3: Arg3,
+        _ arg4: Arg4,
+        _ arg5: Arg5,
+        _ arg6: Arg6,
+        _ arg7: Arg7,
+        _ arg8: Arg8,
+        _ arg9: Arg9
     ) -> Service? {
         return resolve(serviceType, name: nil, arguments: arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
     }
@@ -499,9 +567,19 @@ extension Container {
     public func resolve<Service, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9>(
         _: Service.Type,
         name: String?,
-        arguments arg1: Arg1, _ arg2: Arg2, _ arg3: Arg3, _ arg4: Arg4, _ arg5: Arg5, _ arg6: Arg6, _ arg7: Arg7, _ arg8: Arg8, _ arg9: Arg9
+        arguments arg1: Arg1,
+        _ arg2: Arg2,
+        _ arg3: Arg3,
+        _ arg4: Arg4,
+        _ arg5: Arg5,
+        _ arg6: Arg6,
+        _ arg7: Arg7,
+        _ arg8: Arg8,
+        _ arg9: Arg9
     ) -> Service? {
         typealias FactoryType = ((Resolver, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8, Arg9)) -> Any
-        return _resolve(name: name) { (factory: FactoryType) in factory((self, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)) }
+        return _resolve(name: name) { (factory: FactoryType) in
+            factory((self, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9))
+        }
     }
 }

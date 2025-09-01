@@ -71,6 +71,6 @@
         "ValidateDocumentationComments": false
     },
     "spacesAroundRangeFormationOperators": false,
-    "spacesBeforeEndOfLineComments": 2,
+    "spacesBeforeEndOfLineComments": 1,
     "version": 1
 }

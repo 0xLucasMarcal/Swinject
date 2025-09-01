@@ -3,6 +3,7 @@
 //
 
 import XCTest
+
 @testable import Swinject
 
 class ContainerTests_Behavior: XCTestCase {

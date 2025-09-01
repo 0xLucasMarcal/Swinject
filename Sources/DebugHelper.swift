@@ -21,7 +21,8 @@ internal final class LoggingDebugHelper: DebugHelper {
             "\t{ \(description(serviceType: serviceType, serviceKey: key)) }",
             "Available registrations:",
         ]
-        output += availableRegistrations
+        output +=
+            availableRegistrations
             .filter { $0.1 is ServiceEntry<Service> }
             .map { "\t{ " + $0.1.describeWithKey($0.0) + " }" }
 
@@ -38,8 +39,8 @@ internal func description(
     // The protocol order in "protocol<>" is non-deterministic.
     let nameDescription = serviceKey.name.map { ", Name: \"\($0)\"" } ?? ""
     let optionDescription = serviceKey.option.map { ", \($0)" } ?? ""
-    let initCompletedDescription = initCompleted.isEmpty ?
-        "" : ", InitCompleted: Specified \(initCompleted.count) closures"
+    let initCompletedDescription =
+        initCompleted.isEmpty ? "" : ", InitCompleted: Specified \(initCompleted.count) closures"
     let objectScopeDescription = objectScope.map { ", ObjectScope: \($0)" } ?? ""
     return "Service: \(serviceType)"
         + nameDescription

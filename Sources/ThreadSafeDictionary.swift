@@ -31,7 +31,7 @@ internal final class ThreadSafeDictionary<KeyType: Hashable, ValueType> {
             }
         }
     }
-    
+
     public subscript(key: KeyType, default defaultValue: @autoclosure () -> ValueType) -> ValueType? {
         get {
             return lock.read { self.internalDictionary[key, default: defaultValue()] }
@@ -49,7 +49,7 @@ internal final class ThreadSafeDictionary<KeyType: Hashable, ValueType> {
             self.internalDictionary.forEach(block)
         }
     }
-    
+
     public func forEachWrite(_ block: ((key: KeyType, value: ValueType)) -> Void) {
         lock.write {
             self.internalDictionary.forEach(block)

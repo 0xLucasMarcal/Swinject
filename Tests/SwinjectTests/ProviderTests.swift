@@ -3,6 +3,7 @@
 //
 
 import XCTest
+
 @testable import Swinject
 
 class ProviderTests: XCTestCase {
@@ -22,7 +23,9 @@ class ProviderTests: XCTestCase {
 
     func testProviderDoesNotCreateInstanceUntilRequested() {
         var created = false
-        container.register(Animal.self) { _ in created = true; return Dog() }
+        container.register(Animal.self) { _ in
+            created = true; return Dog()
+        }
 
         _ = container.resolve(Provider<Animal>.self)
 
@@ -31,7 +34,9 @@ class ProviderTests: XCTestCase {
 
     func testProviderResolveInstanceFromContainerEachTime() {
         var created = 0
-        container.register(Animal.self) { _ in created += 1; return Dog() }
+        container.register(Animal.self) { _ in
+            created += 1; return Dog()
+        }
 
         let provider = container.resolve(Provider<Animal>.self)
         _ = provider?.instance

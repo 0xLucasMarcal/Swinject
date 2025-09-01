@@ -81,7 +81,7 @@ internal protocol LazyChildProtocol: AnyObject {
 internal protocol LazySingletonProtocol {
     var lazy: Lazy<LazilyResolvedProtocol> { get }
 }
-internal protocol LazilyResolvedProtocol: AnyObject { }
+internal protocol LazilyResolvedProtocol: AnyObject {}
 
 internal class LazyParent: LazyParentProtocol {
     let child1: LazyChildProtocol
@@ -101,4 +101,4 @@ internal class LazyChild: LazyChildProtocol, LazySingletonProtocol {
     }
 }
 
-internal class LazilyResolved: LazilyResolvedProtocol { }
+internal class LazilyResolved: LazilyResolvedProtocol {}

@@ -3,6 +3,7 @@
 //
 
 import Foundation
+
 public extension Container {
     internal static func log(_ message: String) {
         if ProcessInfo.processInfo.environment["SWINJECT_LOGGING_ENABLED"] == "1" {

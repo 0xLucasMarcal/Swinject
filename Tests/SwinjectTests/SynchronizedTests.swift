@@ -4,6 +4,7 @@
 
 import Dispatch
 import XCTest
+
 @testable import Swinject
 
 class SynchronizedResolverTests: XCTestCase {
@@ -67,7 +68,7 @@ class SynchronizedResolverTests: XCTestCase {
 
         XCTAssert(graphs.count == totalThreads)
     }
-    
+
     func testSynchronizedResolverSynchronousReadsWrites() {
         let iterationCount = 3_000
         let container = Container().synchronize() as! Container
@@ -77,13 +78,16 @@ class SynchronizedResolverTests: XCTestCase {
 
         DispatchQueue.global(qos: .background).async {
             for index in 0..<iterationCount {
-                container.register(Animal.self, factory: { _ in
-                    Cat(name: "\(index)")
-                })
+                container.register(
+                    Animal.self,
+                    factory: { _ in
+                        Cat(name: "\(index)")
+                    }
+                )
             }
             registerExpectation.fulfill()
         }
-        
+
         DispatchQueue.global(qos: .background).async {
             DispatchQueue.concurrentPerform(iterations: iterationCount) { (index) in
                 _ = container.resolve(Animal.self)
@@ -92,7 +96,7 @@ class SynchronizedResolverTests: XCTestCase {
                 resolutionLock.unlock()
             }
         }
-        
+
         wait(for: [registerExpectation] + resolveExpectations, timeout: 3)
     }
 
@@ -107,7 +111,8 @@ class SynchronizedResolverTests: XCTestCase {
         }
 
         let queue = DispatchQueue(
-            label: "SwinjectTests.SynchronizedContainerSpec.Queue", attributes: .concurrent
+            label: "SwinjectTests.SynchronizedContainerSpec.Queue",
+            attributes: .concurrent
         )
         waitUntil(timeout: .seconds(2)) { done in
             queue.async {
@@ -147,7 +152,8 @@ class SynchronizedResolverTests: XCTestCase {
         let synchronized = container.synchronize()
 
         let queue = DispatchQueue(
-            label: "SwinjectTests.SynchronizedContainerSpec.Queue", attributes: .concurrent
+            label: "SwinjectTests.SynchronizedContainerSpec.Queue",
+            attributes: .concurrent
         )
         waitUntil(timeout: .seconds(2)) { done in
             queue.async {
@@ -211,7 +217,7 @@ class SynchronizedResolverTests: XCTestCase {
         // Resolve, but don't access lazy value yet.
         _ = container.resolve(LazySingletonProtocol.self)!
 
-        // First lazy value access in LazyParent resolve, this 
+        // First lazy value access in LazyParent resolve, this
         // could've happened in its init or wherever.
         let parent = container.resolve(LazyParentProtocol.self)!
 
@@ -295,7 +301,7 @@ private func onMultipleThreads(actions: [() -> Void]) {
             attributes: .concurrent
         )
         let counter = Counter(max: actions.count * totalThreads)
-        for _ in 0 ..< totalThreads {
+        for _ in 0..<totalThreads {
             actions.forEach { action in
                 queue.async {
                     action()
@@ -310,7 +316,8 @@ private func onMultipleThreads(actions: [() -> Void]) {
 
 private func waitUntil(
     timeout: DispatchTimeInterval,
-    action: @escaping (@escaping () -> Void) -> Void) {
+    action: @escaping (@escaping () -> Void) -> Void
+) {
 
     let group = DispatchGroup()
     group.enter()

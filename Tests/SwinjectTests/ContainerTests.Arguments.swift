@@ -3,6 +3,7 @@
 //
 
 import XCTest
+
 @testable import Swinject
 
 class ContainerTests_Arguments: XCTestCase {
@@ -29,7 +30,8 @@ class ContainerTests_Arguments: XCTestCase {
         }
         let animal = container.resolve(
             Animal.self,
-            arguments: "1", "2"
+            arguments: "1",
+            "2"
         )
         XCTAssertEqual(animal?.name, "12")
     }
@@ -40,7 +42,9 @@ class ContainerTests_Arguments: XCTestCase {
         }
         let animal = container.resolve(
             Animal.self,
-            arguments: "1", "2", "3"
+            arguments: "1",
+            "2",
+            "3"
         )
         XCTAssertEqual(animal?.name, "123")
     }
@@ -51,7 +55,10 @@ class ContainerTests_Arguments: XCTestCase {
         }
         let animal = container.resolve(
             Animal.self,
-            arguments: "1", "2", "3", "4"
+            arguments: "1",
+            "2",
+            "3",
+            "4"
         )
         XCTAssertEqual(animal?.name, "1234")
     }
@@ -62,51 +69,106 @@ class ContainerTests_Arguments: XCTestCase {
         }
         let animal = container.resolve(
             Animal.self,
-            arguments: "1", "2", "3", "4", "5"
+            arguments: "1",
+            "2",
+            "3",
+            "4",
+            "5"
         )
         XCTAssertEqual(animal?.name, "12345")
     }
 
     func testContainierAccepts6Arguments() {
-        container.register(Animal.self) { (_, arg1: String, arg2: String, arg3: String, arg4: String, arg5: String, arg6: String) in // swiftlint:disable:this line_length
+        container.register(Animal.self) {
+            (_, arg1: String, arg2: String, arg3: String, arg4: String, arg5: String, arg6: String) in // swiftlint:disable:this line_length
             Cat(name: arg1 + arg2 + arg3 + arg4 + arg5 + arg6)
         }
         let animal = container.resolve(
             Animal.self,
-            arguments: "1", "2", "3", "4", "5", "6"
+            arguments: "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"
         )
         XCTAssertEqual(animal?.name, "123456")
     }
 
     func testContainierAccepts7Arguments() {
-        container.register(Animal.self) { (_, arg1: String, arg2: String, arg3: String, arg4: String, arg5: String, arg6: String, arg7: String) in // swiftlint:disable:this line_length
+        container.register(Animal.self) {
+            (_, arg1: String, arg2: String, arg3: String, arg4: String, arg5: String, arg6: String, arg7: String) in // swiftlint:disable:this line_length
             Cat(name: arg1 + arg2 + arg3 + arg4 + arg5 + arg6 + arg7)
         }
         let animal = container.resolve(
             Animal.self,
-            arguments: "1", "2", "3", "4", "5", "6", "7"
+            arguments: "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"
         )
         XCTAssertEqual(animal?.name, "1234567")
     }
 
     func testContainierAccepts8Arguments() {
-        container.register(Animal.self) { (_, arg1: String, arg2: String, arg3: String, arg4: String, arg5: String, arg6: String, arg7: String, arg8: String) in // swiftlint:disable:this line_length
+        container.register(Animal.self) {
+            (
+                _,
+                arg1: String,
+                arg2: String,
+                arg3: String,
+                arg4: String,
+                arg5: String,
+                arg6: String,
+                arg7: String,
+                arg8: String
+            ) in // swiftlint:disable:this line_length
             Cat(name: arg1 + arg2 + arg3 + arg4 + arg5 + arg6 + arg7 + arg8)
         }
         let animal = container.resolve(
             Animal.self,
-            arguments: "1", "2", "3", "4", "5", "6", "7", "8"
+            arguments: "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"
         )
         XCTAssertEqual(animal?.name, "12345678")
     }
 
     func testContainierAccepts9Arguments() {
-        container.register(Animal.self) { (_, arg1: String, arg2: String, arg3: String, arg4: String, arg5: String, arg6: String, arg7: String, arg8: String, arg9: String) in // swiftlint:disable:this line_length
+        container.register(Animal.self) {
+            (
+                _,
+                arg1: String,
+                arg2: String,
+                arg3: String,
+                arg4: String,
+                arg5: String,
+                arg6: String,
+                arg7: String,
+                arg8: String,
+                arg9: String
+            ) in // swiftlint:disable:this line_length
             Cat(name: arg1 + arg2 + arg3 + arg4 + arg5 + arg6 + arg7 + arg8 + arg9)
         }
         let animal = container.resolve(
             Animal.self,
-            arguments: "1", "2", "3", "4", "5", "6", "7", "8", "9"
+            arguments: "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
         )
         XCTAssertEqual(animal?.name, "123456789")
     }

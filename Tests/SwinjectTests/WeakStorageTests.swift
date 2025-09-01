@@ -3,6 +3,7 @@
 //
 
 import XCTest
+
 @testable import Swinject
 
 class WeakStorageTests: XCTestCase {

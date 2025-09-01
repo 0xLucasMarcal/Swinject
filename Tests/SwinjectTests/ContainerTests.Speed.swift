@@ -3,6 +3,7 @@
 //
 
 import XCTest
+
 @testable import Swinject
 
 /// Not a perfect way to measure speed improvements, especially with all the different hardware that will be running
@@ -28,7 +29,7 @@ class ContainerSpeedTests: XCTestCase {
         measure(options: measureOptions) {
             container.resolveCats()
         }
-    }    
+    }
 
     func testContainerSyncResolvesByArguments() {
         container = container.synchronize() as? Container

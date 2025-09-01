@@ -3,6 +3,7 @@
 //
 
 import XCTest
+
 @testable import Swinject
 
 class ContainerTests_CustomScope: XCTestCase {
@@ -16,7 +17,9 @@ class ContainerTests_CustomScope: XCTestCase {
 
     func testContainerCreatesNewInstanceStorageForEachService() {
         var instances = 0
-        let custom = ObjectScope(storageFactory: { instances += 1; return FakeStorage() })
+        let custom = ObjectScope(storageFactory: {
+            instances += 1; return FakeStorage()
+        })
 
         container.register(Int.self) { _ in 0 }.inObjectScope(custom)
         container.register(Double.self) { _ in 0 }.inObjectScope(custom)
@@ -110,7 +113,7 @@ class ContainerTests_CustomScope: XCTestCase {
         XCTAssertNotNil(graphInstance)
 
         container.resetObjectScope(graphScope, serviceType: Foo.self)
-        let containerInstanceAfterReset = container.resolve(Foo.self, name: "containerScoped")  // container-scoped
+        let containerInstanceAfterReset = container.resolve(Foo.self, name: "containerScoped") // container-scoped
 
         XCTAssertTrue(containerInstance === containerInstanceAfterReset)
     }

@@ -3,6 +3,7 @@
 //
 
 import XCTest
+
 @testable import Swinject
 
 class ContainerTests_DebugHelper: XCTestCase {
@@ -20,12 +21,15 @@ class ContainerTests_DebugHelper: XCTestCase {
         _ = container._resolve(name: "name") { (_: (Int) -> Any) in 1 as Double } as Double?
 
         XCTAssertEqual("\(spy.serviceType)", "Double")
-        XCTAssertEqual(spy.key, ServiceKey(
-            serviceType: Double.self,
-            argumentsType: Int.self,
-            name: "name",
-            option: nil
-        ))
+        XCTAssertEqual(
+            spy.key,
+            ServiceKey(
+                serviceType: Double.self,
+                argumentsType: Int.self,
+                name: "name",
+                option: nil
+            )
+        )
     }
 
     func testContainerShouldCallHelperWithAllRegistrations() {
