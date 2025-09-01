@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "978D2C823AE8C4BC19CF6644"
+               BlueprintIdentifier = "0158C6D17BD19D92ADD9D447"
                BuildableName = "SwinjectTests.xctest"
-               BlueprintName = "SwinjectTests-watchOS"
+               BlueprintName = "SwinjectTests-visionOS"
                ReferencedContainer = "container:Swinject.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "978D2C823AE8C4BC19CF6644"
+            BlueprintIdentifier = "0158C6D17BD19D92ADD9D447"
             BuildableName = "SwinjectTests.xctest"
-            BlueprintName = "SwinjectTests-watchOS"
+            BlueprintName = "SwinjectTests-visionOS"
             ReferencedContainer = "container:Swinject.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -56,9 +56,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "978D2C823AE8C4BC19CF6644"
+            BlueprintIdentifier = "0158C6D17BD19D92ADD9D447"
             BuildableName = "SwinjectTests.xctest"
-            BlueprintName = "SwinjectTests-watchOS"
+            BlueprintName = "SwinjectTests-visionOS"
             ReferencedContainer = "container:Swinject.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -76,9 +76,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "978D2C823AE8C4BC19CF6644"
+            BlueprintIdentifier = "0158C6D17BD19D92ADD9D447"
             BuildableName = "SwinjectTests.xctest"
-            BlueprintName = "SwinjectTests-watchOS"
+            BlueprintName = "SwinjectTests-visionOS"
             ReferencedContainer = "container:Swinject.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
